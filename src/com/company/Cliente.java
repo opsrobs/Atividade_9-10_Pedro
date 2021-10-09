@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Cliente {
     private String nome;
     private String email;
-    private float fone;
+    private String fone;
     private String observacao;
     private ArrayList<OrdenServico>ordenServicos=new ArrayList<>();
 
@@ -13,14 +13,18 @@ public class Cliente {
         this.ordenServicos.add(new OrdenServico());
     }
 
-    public Cliente(String nome, String email, float fone, String observacao) {
+    public Cliente(String nome, String email, String fone, String observacao) {
         this.nome = nome;
         this.email = email;
         this.fone = fone;
         this.observacao = observacao;
     }
+    public Cliente() {
 
-    @Override
+    }
+
+
+        @Override
     public String toString() {
         return "\nCliente: " +
                 "\nNome: " + nome +
@@ -46,11 +50,11 @@ public class Cliente {
         this.email = email;
     }
 
-    public float getFone() {
+    public String getFone() {
         return fone;
     }
 
-    public void setFone(float fone) {
+    public void setFone(String fone) {
         this.fone = fone;
     }
 
@@ -60,5 +64,13 @@ public class Cliente {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public ArrayList<OrdenServico> getOrdenServicos() {
+        return ordenServicos;
+    }
+
+    public void setOrdenServicos(ArrayList<OrdenServico> ordenServicos) {
+        this.ordenServicos = ordenServicos;
     }
 }
