@@ -5,38 +5,69 @@ import java.util.Date;
 public class Main {
 
     public static void main(String[] args) {
-        Cliente cliente;
-        ArraysRandons aleatorio= new ArraysRandons();
         Servicos srv=new Servicos();
+        ArraysRandons ar=new ArraysRandons();
 
-        String nome,email,fone,obs;
-        String nomePeriferico,especificacao;
-        int numOs;
-        double valor;
-        Date d = new Date();
-        String data,status;
+        Cliente cliente = new Cliente();
+        Equipamento equipamento;
+        Periferico periferico;
+        OrdenServico ordenServico;
 
+        String nome,email,fone,observacao;                 //dados do cliente
 
-        nome=srv.random(aleatorio.nomes());
-        while (!nome.equalsIgnoreCase("fim")){
-            email=srv.random(aleatorio.email());
-            fone=srv.random(aleatorio.telefone());
-            obs=srv.random(aleatorio.observacaoDoCliente());
-            cliente=new Cliente(nome,email,fone,obs);
-            numOs=srv.randomN(aleatorio.numeroOrdenServico());
+        String nomeEq, tipoEq, modeloEq, defeitoEq;
 
-            nomePeriferico=srv.random(aleatorio.nomePeriferico());
-            while (!nomePeriferico.equalsIgnoreCase("fim")) {
-                especificacao=srv.random(aleatorio.especificacaoPeriferico());
-                while (numOs != 0) {
-                    data = srv.random(aleatorio.datasDeAtendimentoOS());
-                    d = srv.converterData(data);
-                    obs = srv.random(aleatorio.descricaoOS());
-                    status = srv.random(aleatorio.status());
-                    valor = srv.randomD(aleatorio.valor());
+        String nomePeriferico, especificacao;               //dados perifericos
+
+        int numeroOs=0;                                     //dados da os
+        Date data = new Date();                             //dados da os
+        String obs, status;                                 //dados da os
+        double valor;                                       //dados da os
+
+        final String validador = "fim";
+
+        nome=srv.random(ar.nomes());
+        while (!nome.equalsIgnoreCase(validador)){
+            email=srv.random(ar.email());
+            fone=srv.random(ar.telefone());
+            observacao=srv.random(ar.observacaoDoCliente());
+
+            numeroOs=srv.randomN(ar.numeroOrdenServico());
+            while (numeroOs !=0){
+                data=srv.converterData(srv.random(ar.datasDeAtendimentoOS()));
+                obs=srv.random(ar.observacaoDoCliente());
+                status=srv.random(ar.status());
+                valor=srv.randomD(ar.valor());
+
+                nomeEq=srv.random(ar.nomeEquipamento());
+                tipoEq=srv.random(ar.tipoEquipamento());
+                modeloEq=srv.random(ar.modeloEquipamento());
+                defeitoEq=srv.random(ar.defeitoEquipamento());
+
+                equipamento = new Equipamento(nomeEq,tipoEq,modeloEq,defeitoEq);
+                nomePeriferico=srv.random(ar.nomePeriferico());
+                while (!nomePeriferico.equalsIgnoreCase(validador)){
+                    especificacao=srv.random(ar.especificacaoPeriferico());
+                    periferico=new Periferico();
+                    equipamento.setPerifericos(periferico);
+                    nomePeriferico=srv.random(ar.nomePeriferico());
+
                 }
+
+                ordenServico = new OrdenServico(numeroOs,data,obs,status,valor,equipamento);
+                cliente.setOrdenServicos(ordenServico);
+                numeroOs=srv.randomN(ar.numeroOrdenServico());
             }
+            cliente = new Cliente(nome,email,fone,observacao);
+            srv.setClientes(cliente);
+            nome=srv.random(ar.nomes());
+
         }
+
+        System.out.println(cliente.toString());
+
+
+
 
     }
 }

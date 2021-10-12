@@ -9,7 +9,7 @@ public class Cliente {
     private String observacao;
     private ArrayList<OrdenServico>ordenServicos=new ArrayList<>();
 
-    public void setEquipamentos(OrdenServico ordenServicos){
+    public void setOrdenServicos(OrdenServico ordenServicos){
         this.ordenServicos.add(new OrdenServico());
     }
 
@@ -19,6 +19,15 @@ public class Cliente {
         this.fone = fone;
         this.observacao = observacao;
     }
+
+    public Cliente(String nome, String email, String fone, String observacao, ArrayList<OrdenServico> ordenServicos) {
+        this.nome = nome;
+        this.email = email;
+        this.fone = fone;
+        this.observacao = observacao;
+        this.ordenServicos = ordenServicos;
+    }
+
     public Cliente() {
 
     }
@@ -31,7 +40,7 @@ public class Cliente {
                 "\nEmail: " + email +
                 "\nTelefone: " + fone +
                 ", observacao: " + observacao +
-                ", equipamentos: " + ordenServicos;
+                ", Ordens de Serviço: " + ordenServicos;
     }
 
     public String getNome() {
