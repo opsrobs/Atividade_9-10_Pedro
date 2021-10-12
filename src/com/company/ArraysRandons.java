@@ -49,14 +49,14 @@ public class ArraysRandons {
     //=============================================================================================//
 
     public String[]nomePeriferico(){
-        return new String[]{"Mouse","Teclado","Placa mãe","processador","Webcam"};
+        return new String[]{"Mouse","Teclado","Placa mãe","processador","Webcam","fim","fim","fim"};
     }
     public String[]especificacaoPeriferico(){
         return new String[]{"Quebrado","novo","Arranhado","mal funcionamento"};
     }
     //=============================================================================================//
     public int[]numeroOrdenServico(){
-        return new int[]{3215,1234,7894,4684,661,341,222};
+        return new int[]{3215,1234,7894,4684,661,341,222,0};
     }
 
 
