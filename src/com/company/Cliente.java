@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Cliente {
     private String nome;
@@ -9,8 +10,11 @@ public class Cliente {
     private String observacao;
     private ArrayList<OrdenServico>ordenServicos=new ArrayList<>();
 
-    public void setOrdenServicos(OrdenServico ordenServicos){
-        this.ordenServicos.add(new OrdenServico());
+
+    public void setOrdenServicos(OrdenServico ordenServico, int tamLista){
+        if (ordenServicos.size() <= tamLista){
+            this.ordenServicos.add(ordenServico);
+        }
     }
 
     public Cliente(String nome, String email, String fone, String observacao) {
@@ -36,11 +40,11 @@ public class Cliente {
         @Override
     public String toString() {
         return "\nCliente: " +
-                "\nNome: " + nome +
-                "\nEmail: " + email +
-                "\nTelefone: " + fone +
-                ", observacao: " + observacao +
-                ", Ordens de Serviço: " + ordenServicos;
+                "\n\tNome: " + nome +
+                "\n\tEmail: " + email +
+                "\n\tTelefone: " + fone +
+                "\n\tObservacao: " + observacao+"\n\n"
+                 + ordenServicos;
     }
 
     public String getNome() {

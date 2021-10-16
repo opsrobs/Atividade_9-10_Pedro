@@ -11,9 +11,9 @@ public class Periferico {
 
     @Override
     public String toString() {
-        return "\nPeriferico: " +
-                "\nNome: " + nome + '\'' +
-                "\nEspecificacao: " + especificacao;
+        return "Periferico: " +
+                "\n\tNome: " + nome +
+                "\n\tEspecificacao: " + especificacao;
     }
 
     public Periferico() {

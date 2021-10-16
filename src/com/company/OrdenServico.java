@@ -24,13 +24,13 @@ public class OrdenServico {
 
     @Override
     public String toString() {
-        return "\nOrdenServico: " +
-                "\nNº Orden de Servico: " + numeroOS +
-                "\nData: " + data +
-                "\nObservacao: "+ observacao +
-                "\nStatus: " + status +
-                "\nValor: " + valor +
-                "\nEquipamento: " + equipamento;
+        return "Ordens de Serviço: " +
+                "\n\tNº Orden de Servico: " + numeroOS +
+                "\n\tData: " + data +
+                "\n\tObservacao: "+ observacao +
+                "\n\tStatus: " + status +
+                "\n\tValor: " + valor
+                + equipamento;
     }
 
     public int getNumeroOS() {

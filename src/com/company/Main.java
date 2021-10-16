@@ -8,7 +8,7 @@ public class Main {
         Servicos srv=new Servicos();
         ArraysRandons ar=new ArraysRandons();
 
-        Cliente cliente = new Cliente();
+        Cliente cliente;
         Equipamento equipamento;
         Periferico periferico;
         OrdenServico ordenServico;
@@ -19,8 +19,8 @@ public class Main {
 
         String nomePeriferico, especificacao;               //dados perifericos
 
-        int numeroOs=0;                                     //dados da os
-        Date data = new Date();                             //dados da os
+        int numeroOs;                                     //dados da os
+        Date data;                                           //dados da os
         String obs, status;                                 //dados da os
         double valor;                                       //dados da os
 
@@ -31,6 +31,7 @@ public class Main {
             email=srv.random(ar.email());
             fone=srv.random(ar.telefone());
             observacao=srv.random(ar.observacaoDoCliente());
+            cliente = new Cliente(nome,email,fone,observacao);
 
             numeroOs=srv.randomN(ar.numeroOrdenServico());
             while (numeroOs !=0){
@@ -48,23 +49,22 @@ public class Main {
                 nomePeriferico=srv.random(ar.nomePeriferico());
                 while (!nomePeriferico.equalsIgnoreCase(validador)){
                     especificacao=srv.random(ar.especificacaoPeriferico());
-                    periferico=new Periferico();
+                    periferico=new Periferico(nomePeriferico,especificacao);
                     equipamento.setPerifericos(periferico);
                     nomePeriferico=srv.random(ar.nomePeriferico());
 
                 }
 
                 ordenServico = new OrdenServico(numeroOs,data,obs,status,valor,equipamento);
-                cliente.setOrdenServicos(ordenServico);
+                cliente.setOrdenServicos(ordenServico,3);
                 numeroOs=srv.randomN(ar.numeroOrdenServico());
             }
-            cliente = new Cliente(nome,email,fone,observacao);
-            srv.setClientes(cliente);
+            srv.setClientes(nome,email,fone,observacao,cliente.getOrdenServicos());
             nome=srv.random(ar.nomes());
 
         }
 
-        System.out.println(cliente.toString());
+        System.out.println(srv.clientes);
 
 
 

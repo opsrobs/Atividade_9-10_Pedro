@@ -7,10 +7,20 @@ public class Equipamento {
     private String tipo;
     private String modelo;
     private String Defeito;
-    private ArrayList<Periferico>perifericos= new ArrayList<>();
+    private final ArrayList<Periferico>perifericos= new ArrayList<>();
 
     public void setPerifericos(Periferico periferico){
-        this.perifericos.add(new Periferico());
+        this.perifericos.add(periferico);
+    }
+
+    @Override
+    public String toString() {
+        return "\n\nEquipamento:" +
+                "\n\tNome: " + nome +
+                "\n\tTipo: " + tipo +
+                "\n\tModelo: " + modelo +
+                "\n\tDefeito: " + Defeito +
+                "\n\n" + perifericos;
     }
 
     public Equipamento(String nome, String tipo, String modelo, String defeito) {

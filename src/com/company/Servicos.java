@@ -9,8 +9,8 @@ import java.util.Random;
 public class Servicos {
     public ArrayList<Cliente>clientes=new ArrayList<>();
 
-    public void setClientes(Cliente clientes){
-        this.clientes.add(new Cliente());
+    public void setClientes(String nome, String email, String fone, String observacao, ArrayList<OrdenServico> ordenServicos){
+        this.clientes.add(new Cliente(nome,email,fone,observacao,ordenServicos));
     }
     public String random(String[] randomize){
         Random random = new Random();
@@ -29,11 +29,11 @@ public class Servicos {
     }
 
     public String OrdensDeServicoComSeusRespectivosDados(){
-        String dados="";
+        StringBuilder dados= new StringBuilder();
         for (Cliente cliente : clientes){
-            dados+= cliente.getOrdenServicos().toString();
+            dados.append(cliente.getOrdenServicos().toString());
         }
-        return dados;
+        return dados.toString();
     }
     public Date converterData(String d){
         SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
