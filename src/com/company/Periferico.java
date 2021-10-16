@@ -9,6 +9,7 @@ public class Periferico {
         this.especificacao = especificacao;
     }
 
+
     @Override
     public String toString() {
         return "Periferico: " +

@@ -51,20 +51,21 @@ public class Main {
                     especificacao=srv.random(ar.especificacaoPeriferico());
                     periferico=new Periferico(nomePeriferico,especificacao);
                     equipamento.setPerifericos(periferico);
-                    nomePeriferico=srv.random(ar.nomePeriferico());
+                    nomePeriferico=equipamento.limiteLista(1);
 
                 }
 
                 ordenServico = new OrdenServico(numeroOs,data,obs,status,valor,equipamento);
-                cliente.setOrdenServicos(ordenServico,3);
+                cliente.setOrdenServicos(ordenServico,1);
                 numeroOs=srv.randomN(ar.numeroOrdenServico());
             }
             srv.setClientes(nome,email,fone,observacao,cliente.getOrdenServicos());
-            nome=srv.random(ar.nomes());
+            nome=srv.limiteLista(1);
 
         }
 
-        System.out.println(srv.clientes);
+//        System.out.println(srv.clientes);
+        System.out.println(srv.OrdensDeServicoComSeusRespectivosDados());
 
 
 

@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Random;
 
 public class Servicos {
+    ArraysRandons randons = new ArraysRandons();
     public ArrayList<Cliente>clientes=new ArrayList<>();
 
     public void setClientes(String nome, String email, String fone, String observacao, ArrayList<OrdenServico> ordenServicos){
@@ -26,6 +27,13 @@ public class Servicos {
         Random random = new Random();
         int index = random.nextInt(randomize.length);
         return randomize[index];
+    }
+
+    public String limiteLista(int tamUser){
+        if (this.clientes.size()==tamUser ){
+            return "fim";
+        }else
+            return this.random(randons.nomes());
     }
 
     public String OrdensDeServicoComSeusRespectivosDados(){

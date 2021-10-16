@@ -13,6 +13,15 @@ public class Equipamento {
         this.perifericos.add(periferico);
     }
 
+    public String limiteLista(int tamUser){
+        ArraysRandons randons = new ArraysRandons();
+        Servicos srv = new Servicos();
+        if (this.perifericos.size()==tamUser ){
+            return "fim";
+        }else
+            return srv.random(randons.nomePeriferico());
+    }
+
     @Override
     public String toString() {
         return "\n\nEquipamento:" +
